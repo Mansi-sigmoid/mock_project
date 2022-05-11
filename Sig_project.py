@@ -5,7 +5,7 @@ from encrypt import keys
 import json
 from tweepy import Stream
 producer = KafkaProducer(bootstrap_servers='localhost:9092')
-topic_name = 'SigProject10' #user defined
+topic_name = 'Topic_1' #user defined
 
 class Listener(Stream):
     def on_data(self, raw_data):
@@ -28,7 +28,7 @@ class Listener(Stream):
             info['location'] = get_country_name(data['user']['location']) #to get the valid country name.
             info['followers_count'] = data['user']['followers_count']
             info['retweet_count'] = data['retweet_count']
-            # producer.send(topic_name, json.dumps(info).encode('utf-8'))  #send the data from twitter to Kafka topic
+            producer.send(topic_name, json.dumps(info).encode('utf-8'))  #send the data from twitter to Kafka topic
             print(info)
         except Exception as e:
             print("Error",e)
