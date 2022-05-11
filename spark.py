@@ -22,22 +22,9 @@ def foreach_batch_function(dff, epoch_id):
     print("******************************************")
 
 
-spark = SparkSession \
-    .builder \
-    .appName("Kafka_Tweet_app") \
-    .config("spark.mongodb.input.uri", "mongodb://localhost:27017") \
-    .config("spark.mongodb.output.uri", "mongodb://localhost:27017") \
-    .config("spark.jars.packages", "org.mongodb.spark:mongo-spark-connector_2.12:3.0.1")\
-    .master('local')\
-    .getOrCreate()
+spark = SparkSession.builder.appName("Kafka_Tweet_app").config("spark.mongodb.input.uri", "mongodb://localhost:27017").config("spark.mongodb.output.uri", "mongodb://localhost:27017") .config("spark.jars.packages", "org.mongodb.spark:mongo-spark-connector_2.12:3.0.1").master('local').getOrCreate()
 
-df = spark \
-    .readStream \
-    .format("kafka") \
-    .option("startingOffsets", "earliest") \
-    .option("kafka.bootstrap.servers", "localhost:9092") \
-    .option("subscribe", "SigProject10") \
-    .load()
+df = spark.readStream.format("kafka").option("startingOffsets", "earliest").option("kafka.bootstrap.servers", "localhost:9092").option("subscribe", "SigProject10").load()
 
 events = df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
 
