@@ -18,12 +18,7 @@ def foreach_batch_function(dff, epoch_id):
 
     final_df = spark.createDataFrame(info)
     final_df.show()
-    final_df.write.\
-        format("mongo").\
-        mode("append").\
-        option("database", "twitter_data").\
-        option("collection", "info")\
-        .save()
+    final_df.write.format("mongo").mode("append").option("database", "twitter_data").option("collection", "info").save()
     print("******************************************")
 
 
