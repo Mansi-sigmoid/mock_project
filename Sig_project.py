@@ -1,7 +1,7 @@
 from datetime import datetime
 from kafka import KafkaConsumer, KafkaProducer
 from country import get_country_name
-# from encrypt import keys
+from encrypt import keys
 import json
 from tweepy import Stream
 producer = KafkaProducer(bootstrap_servers='localhost:9092')
