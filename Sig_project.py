@@ -7,31 +7,33 @@ from tweepy import Stream
 producer = KafkaProducer(bootstrap_servers='localhost:9092')
 topic_name = 'Topic_1' #user defined
 
+count = 0
 class Listener(Stream):
     def on_data(self, raw_data):
-        try:
-            data = json.loads(raw_data) #to json format
-            info = dict()
-            info['id'] = data['id']
-            if "extended_tweet" in data:
-                info['text'] = data['extended_tweet']['full_text']
-                # print(info['extended_tweet'])
-            else:
-                info['text'] = data['text']
-                # print(info['text'])
-            # info['text'] = data['text']
-            info['user_name'] = data['user']['screen_name']
-            dtime = data['created_at']
-            new_datetime = datetime.strftime(datetime.strptime(dtime, '%a %b %d %H:%M:%S +0000 %Y'), '%d-%m-%Y ')
-            info['created_at'] = new_datetime
-            info['language']=data['lang']
-            info['location'] = get_country_name(data['user']['location']) #to get the valid country name.
-            info['followers_count'] = data['user']['followers_count']
-            info['retweet_count'] = data['retweet_count']
-            producer.send(topic_name, json.dumps(info).encode('utf-8'))  #send the data from twitter to Kafka topic
-            print(info)
-        except Exception as e:
-            print("Error",e)
+        global count
+        count += 1
+        data = json.loads(raw_data)
+        info = dict()
+        info['id'] = data['id']
+        info['text'] = data['text']
+        info['created_at'] = data['created_at']
+        info['location'] = data['user']['location']
+        info['name'] = data['user']['name']
+        info['followers_count'] = data['user']['followers_count']
+        info['retweet_count'] = data['retweet_count']
+        # print(info)
+        print(count)
+        # producer.send(topic_name, json.dumps(info).encode('utf-8'))
+        if count == 20:
+            self.disconnect()
+
+    def disconnect(self):
+        if self.running is False:
+            return
+        self.running = False
+
+    def on_closed(self, response):
+        print("Stream closed")
 
 
 
