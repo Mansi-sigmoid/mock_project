@@ -48,7 +48,6 @@ def get_twitter_data():
 
     myStream = Listener(consumer_key, consumer_secret, access_token, access_token_secret)
     myStream.filter(track=['#covid, #corona'])
-    myStream.on_data()
     print("Hello Sigmoid")
     
 get_twitter_data()
