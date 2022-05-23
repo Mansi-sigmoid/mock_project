@@ -11,6 +11,7 @@ producer = kafka_details.get_producer()
 count = 0
 class Listener(Stream):
     def on_data(self, raw_data):
+        print("Check check")
         global count
         count += 1
         data = json.loads(raw_data)
