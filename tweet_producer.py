@@ -1,9 +1,9 @@
 import json
 from datetime import datetime
 from tweepy import Stream
-from configuration_files.kafka_details import KafkaInfo
-from configuration_files.twitter_credentials import TwitterInfo
-from utils.get_country_name import get_country_name
+from kafka_details import KafkaInfo
+from twitter_credentials import TwitterInfo
+from get_country_name import get_country_name
 
 twitter_details = TwitterInfo()
 kafka_details = KafkaInfo()
