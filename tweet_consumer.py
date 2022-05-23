@@ -16,6 +16,7 @@ def tweet_consumer():
         group_id='my-group',
         value_deserializer=lambda x: loads(x.decode('utf-8')),
     )
+    print("zzzzzzzzz")
 
     client = MongoClient('localhost:27017')
     collection = client.get_database("New_Twitter").get_collection("info")
