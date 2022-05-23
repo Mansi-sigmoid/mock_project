@@ -21,4 +21,5 @@ def tweet_consumer():
     collection = client.get_database("New_Twitter").get_collection("info")
     for msg in consumer:
         collection.insert_one(msg.value)
+        print(msg.value)
 tweet_consumer()
