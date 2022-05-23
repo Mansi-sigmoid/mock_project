@@ -4,10 +4,10 @@ import os
 class TwitterInfo:
     def __init__(self):
         load_dotenv()
-        self.__consumer_key = os.getenv('CONSUMER_KEY')
-        self.__consumer_secret = os.getenv('CONSUMER_SECRET')
-        self.__access_token = os.getenv('ACCESS_TOKEN')
-        self.__access_token_secret = os.getenv('ACCESS_TOKEN_SECRET')
+        self.__consumer_key = "TgcAJiraK0VYwbyHW5EO48syx"
+        self.__consumer_secret = "h2EXPNGkiasULsN2iGZAhcG8fZIAXh6FTZ7zz4pSY1c6zOVghi"
+        self.__access_token =  "1512334525791039490-HT6ywkJJMMcrDgxKOBzpC5oOuxNi47"
+        self.__access_token_secret = "u0FuEAnX2eYM8u9Cra9p37esUSnzk31z8bqAfF4qdmIiD"
 
     def get_consumer_key(self):
         return self.__consumer_key
