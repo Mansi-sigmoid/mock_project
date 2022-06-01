@@ -1,4 +1,4 @@
-from configuration_files.mongodb_connection import DatabaseInfo
+from mongodb_connection import DatabaseInfo
 
 
 def tweets_per_country_daily_basis():
