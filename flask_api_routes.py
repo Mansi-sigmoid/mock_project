@@ -1,12 +1,12 @@
 from flask import Flask, jsonify, request
 
 
-from queries.donations import donations_per_country
-from queries.precautionary_measures import precautionary_measures
-from queries.top_hundred_per_country import top_hundred_per_country
-from queries.top_hundred_words import top_hundred_words
-from queries.tweets_per_country import tweets_per_country
-from queries.tweets_per_country_daily import tweets_per_country_daily_basis
+from donations import donations_per_country
+from precautionary_measures import precautionary_measures
+from top_hundred_per_country import top_hundred_per_country
+from top_hundred_words import top_hundred_words
+from tweets_per_country import tweets_per_country
+from tweets_per_country_daily import tweets_per_country_daily_basis
 
 app = Flask('my app')
 
