@@ -36,4 +36,5 @@ class TestApis(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    print("Testing.  898989....")
     unittest.main()
