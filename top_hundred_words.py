@@ -1,6 +1,6 @@
 import re
-from configuration_files.mongodb_connection import DatabaseInfo
-from utils.remove_stop_words import preprocess
+from mongodb_connection import DatabaseInfo
+from remove_stop_words import preprocess
 
 
 def top_hundred_words():
