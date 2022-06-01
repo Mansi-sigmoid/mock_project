@@ -1,4 +1,4 @@
-from configuration_files.kafka_details import KafkaInfo
+from kafka_details import KafkaInfo
 
 def delete_topics():
     try:
