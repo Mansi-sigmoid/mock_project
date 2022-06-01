@@ -12,27 +12,27 @@ class TestApis(unittest.TestCase):
 
     def test_api_tweets_per_country(self):
         response = requests.get('http://127.0.0.1:5000/api/tweets_per_country')
-        assert response.status_code == 200
+        assert response.status_code == 401
 
     def test_api_tweets_per_country_daily(self):
         response = requests.get('http://127.0.0.1:5000/api/tweets_per_country_daily')
-        assert response.status_code == 200
+        assert response.status_code == 401
 
     def test_api_top_hundred_words(self):
         response = requests.get('http://127.0.0.1:5000/api/top_hundred_words')
-        assert response.status_code == 200
+        assert response.status_code == 401
 
     def test_api_top_hundred_per_country(self):
         response = requests.get('http://127.0.0.1:5000/api/top_hundred_per_country')
-        assert response.status_code == 200
+        assert response.status_code == 401
 
     def test_api_precautionary_measures(self):
         response = requests.get('http://127.0.0.1:5000/api/precautions')
-        assert response.status_code == 200
+        assert response.status_code == 401
 
     def test_api_donations(self):
         response = requests.get('http://127.0.0.1:5000/api/donations')
-        assert response.status_code == 200
+        assert response.status_code == 401
 
 
 if __name__ == '__main__':
